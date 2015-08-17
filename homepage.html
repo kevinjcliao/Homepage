@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+
+	<meta charset="utf-8" />
+	<title>Homepage</title>
+
+	<link rel="stylesheet" href="file:///D:/Homepage/main.css" type="text/css" />
+	<script src="script.js"></script>
+
+</head>
+
+<body id="index" class="homepage" onload="javascript:focusOnInput();">
+	<div id="outer">
+		<div id="middle">
+			<div id="center">
+				<div id="headers">
+					<nav>
+						<ul id="categories" onclick="javascript:menuExpand(event);">
+							<li id="school" class="t1">
+								School
+							</li><li id="browsing" class="t1">
+								Browsing
+							</li><li id="productivity" class="t1">
+								Productivity
+							</li><li id="other" class="t1">
+								Other
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div>
+					<ul id="links">
+						<li id="school_links" class="t2">
+							<a href="www.unf.edu">UNF</a>
+						</li>
+						<li id="browsing_links" class="t2">
+							b
+						</li>
+						<li id="productivity_links" class="t2">
+							c
+						</li>
+						<li id="other_links" class="t2">
+							d
+						</li>
+					</ul>
+				</div>
+				<div id="form">
+					<input id="q" placeholder="Search for Something..." onkeypress="javascript:handleSearch(event,this.value);"></input>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
