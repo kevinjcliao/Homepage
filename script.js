@@ -50,55 +50,83 @@ function handleSearch(e,q) { //Function handles the lookup of engines and queryi
 	}
 }
 
-var lastId;	//Variable stores the id of the last clicked object on the page when called
+var lastId;	//Variable stores the id + links value of the last clicked object on the page when called.
+var lastTarget; //Variable stores the id value of the last clicked object on the page when called.
 var iterance = 0; //Variable allows quick handling of bookmark menu situations.
 
-function menuExpand(event) {	//Function handles the expanding and contracting of the bookmark menu's. To edit bookmarks refer to the .html document.
+function menuExpand(event) {	//Function handles the expanding and contracting of the bookmark menus. To edit bookmarks refer to the .html document.
 	var id = event.target.id + "_links";
+	var target = event.target.id;
 	
 	reset();
 	
 	if(iterance == 0) {
-		closedMenu(id);
+		closedMenu(id, target);
 	}else if(iterance == 1) {
-		openMenu(id);
+		openMenu(id, target);
 	}else if(iterance == 2) {
-		tossupMenu(id);
+		tossupMenu(id, target);
 	}
 }
 
-function closedMenu(id) {	//Function handles all instances where a bookmark menu is closed.
+function closedMenu(id, target) {	//Function handles all instances where a bookmark menu is closed.
 	document.getElementById(id).style.display = "inline-block";
 	document.getElementById("links").style.display = "table";
+	document.getElementById(target).style.background = "#27282B";
+	document.getElementById(target).style.color = "#ffffff";
+	document.getElementById("q").style.background = "#0F1014";
+	document.getElementById("q").style.color = "#898b90";
 	lastId = id;
+	lastTarget = target;
 	iterance = 1;
 }
 
-function openMenu(id) {	//Function handles all instances where a bookmark menu is open.
+function openMenu(id, target) {	//Function handles all instances where a bookmark menu is open.
 	if(lastId == id) {
 		document.getElementById(id).style.display = "none";
 		document.getElementById("links").style.display = "none";
+		document.getElementById(target).style.background = "#0F1014";
+		document.getElementById(target).style.color = "#898b90";
+		document.getElementById("q").style.background = "#27282B";
+		document.getElementById("q").style.color = "#ffffff";
 		iterance = 0;
 	}else if(lastId != id){
 		document.getElementById(id).style.display = "inline-block";
 		document.getElementById("links").style.display = "table";
+		document.getElementById(target).style.background = "#27282B";
+		document.getElementById(target).style.color = "#ffffff";
+		document.getElementById(lastTarget).style.background = "#0F1014";
+		document.getElementById(lastTarget).style.color = "#898b90";
+		document.getElementById("q").style.background = "#0F1014";
+		document.getElementById("q").style.color = "#898b90";
 		iterance = 2;
 	}
 	lastId = id;
+	lastTarget = target;
 }
 
-function tossupMenu(id) { //Function handles instances of the bookmark menu that don't fit
+function tossupMenu(id, target) { //Function handles instances of the bookmark menu that don't fit
 	if(lastId == id) {
 		document.getElementById(id).style.display = "none";
 		document.getElementById("links").style.display = "none";
-		lastId = id;
+		document.getElementById(target).style.background = "#0F1014";
+		document.getElementById(target).style.color = "#898b90";
+		document.getElementById("q").style.background = "#27282B";
+		document.getElementById("q").style.color = "#ffffff";
 		iterance = 0;
 	}else if(lastId != id) {
 		document.getElementById(id).style.display = "inline-block";
 		document.getElementById("links").style.display = "table";
-		lastId = id;
+		document.getElementById(target).style.background = "#27282B";
+		document.getElementById(target).style.color = "#ffffff";
+		document.getElementById(lastTarget).style.background = "#0F1014";
+		document.getElementById(lastTarget).style.color = "#898b90";
+		document.getElementById("q").style.background = "#0F1014";
+		document.getElementById("q").style.color = "#898b90";
 		iterance = 2;
 	}
+	lastId = id;
+	lastTarget = target;
 }
 
 function reset() {	//Function simply resets the bookmark windows
